@@ -10,7 +10,7 @@ https://app.additor.io/p/OcGbY8yL
 * x = dot(C,w)
 * w : (|V|, 1) - One hot Vector (Each Vocab lookup vector)
 * C : (m, V) size - Embedding Vector for each Vocab
-* x(t) : (m, 1) : embedding vector on t -th vocaburary
+* x(t) : (m, 1) : embedding vector on t -th vocabulary
 
 
 ### Model Structure
@@ -19,4 +19,4 @@ https://app.additor.io/p/OcGbY8yL
 * Hidden Layer : hidden size * (n-1)m
 * bias of H : h * 1
 * Output Layer : Vocaburary size (Output) *  hidden size
-* bias of Output Layer : Vocaburary size * 1
+* bias of Output Layer : Vocabulary size * 1
