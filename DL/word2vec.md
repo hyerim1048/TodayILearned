@@ -38,3 +38,13 @@ if C = 5, training words are selected randomly a number R in range <1; C> -> usi
 
 
 
+### More About Skip Gram Model
+
+more detailed explanation
+In the skip-gram model,
+if vocab size = 10000.
+input vector = place 1 in the position corresponding to the middle word and 0s in all of the other positions (10000 dim )
+output is also a single vector but has a probability distribution (with 10,000 components)
+Hidden Layer is ,in fact, the word vector lookup table!
+Source : http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/
+
