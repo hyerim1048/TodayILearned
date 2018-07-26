@@ -43,11 +43,41 @@ SGD :  각  training example  별로  parameter update 를 진행함
 Gradient Descent  를 Optimize 하자
 
 
-
  Momentum
 
 the way to accelerate SGD
  무관한 방향으로의 변동을 줄여줌
+ by add fraction Y  of update vector of the past step to the current update vector
+  t-1 번째 벡터의  fraction 을   현재  vector 에 더해줌
+ fraction 은 보통  0.9 
+ 고전 물리학의  momentum 과 같음. 공이 굴러갈 때  momentum 이 모여서 속도가 점점 빨라지는 것과 같은 원리
+ Oscillation 이 줄고,  convergence 가 안정적으로 !
+ ex.  만약  gradient 가 같은 방향이었다면 속도가 빨라지고 반대라면 속도가 줄어듦
+ 
+ 
+ Adagrad
+learning rate  를  parameters 를 토대로  adapt !
+ infrequent parameters ->   big  업데이트,  frequent parameters -> small update
+그래서   sparse data 에 잘 맞음
+ theta t+1, i  :   t+1  번째  step 의  i 번째  weight 를 의미함
+이전의  weight 에서 앞의 식을  각  gradient 에 곱해줌
+ 
+  단점
+
+learning rate is  decreasing and decaying
+ 보면   denominator 에  squared gradients 가  쌓이는데 양수이기 때문에  learning rate 가 계속 감소함
+
+
+
+
+
+AdaDelta
+accumulate 되는  past gradients 들의  window  사이즈를 제한함
+이전의  gradients 들이  모든 이전의 squared gradients 의 decaying mean 으로 정의함
+ E[g²](t)=γ.E[g²](t−1)+(1−γ).g²(t) - 갈수록 현재의 선택에 집중하는 결과?
+여기에서  y 는  momentum  과 유사하게  fraction  역할을 함
+
+장점 : 초기  learning rate 를 설정할 필요가 없다
 
 
 
