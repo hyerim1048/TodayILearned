@@ -79,6 +79,13 @@ accumulate 되는  past gradients 들의  window  사이즈를 제한함
 
 장점 : 초기  learning rate 를 설정할 필요가 없다
 
+Adam (Adaptive Moment Estimation)
+ exponentially decaying average of past gradients M(t) similar to momentum
+M(t) : mean , values of the first moment
+V(t) : uncentered variance of gradients 
+매우 빠르게 수렴
+
+
 
 
 https://towardsdatascience.com/types-of-optimization-algorithms-used-in-neural-networks-and-ways-to-optimize-gradient-95ae5d39529f
