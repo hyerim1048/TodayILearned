@@ -15,3 +15,8 @@ Question module
 
 Episodic module
 GRU 로 input 이랑 Question embedding 을 하나씩 sequence 로 넣고  state ->
+
+dynamic memory network
+
+정보 : information에 대한 vector를 구하고 attention을 반복적으로 수행함
+fact 를 담고 있는 벡터를 도출한다
