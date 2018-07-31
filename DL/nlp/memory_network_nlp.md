@@ -11,3 +11,7 @@ word embedding -> 문장을 GRU encoding
 Question module
 
 마찬가지로 GRU 로 sentence embedding 을 한다
+
+
+Episodic module
+GRU 로 input 이랑 Question embedding 을 하나씩 sequence 로 넣고  state ->
