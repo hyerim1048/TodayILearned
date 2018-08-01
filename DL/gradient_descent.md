@@ -55,6 +55,22 @@ the way to accelerate SGD
  ex.  만약  gradient 가 같은 방향이었다면 속도가 빨라지고 반대라면 속도가 줄어듦
  
  
+ Nesterov Accelerated Gradient
+
+
+
+slope  를 따라서 그냥 공을 굴리는 건  not smart
+smarter  way 는 공이 다시  slope 를 올라갈 것 같으면 점점 속도를 떨어뜨리는 것이다
+로컬 미니멈에 도달 했을 때  momentum 이 매우 높을 것이고 그렇게 되면 높은  momentum 으로 인해  global minima 를 지나치게 될 수도 있다 ( Yurii Neterov)
+1983  년  NAG 를 발표하게 된다
+먼저  momentum  을 계산해서 크게 점프를 하고 수정을 한다. 이를 통해서  minima 를 놓치지 않도록 한다
+V(t)=γV(t−1)+η∇J( θ−γV(t−1) ) 
+θ=θ−V(t) 
+ NAG  식을 보면   Momentum  에서 사용한 γV(t−1) 를 기존의  parameter 에 먼저 뺴준 뒤 그걸 미분을 한다. 즉, 과거의 위치를 미분해서 빼는 것이 아니라 미래에 예상되는 포지션을 미분해주는 것이다
+이를 통한 장점은,  momentum 을 크게 줘서 움직일 경우, 그리고 그  momentum 으로 인해  minima 를 놓쳤을 경우, 다시 반대방향으로 작용시킴으로써 좀 더 미래를 미리 알고 움직일 수 있다는 장점이 있다.
+ 
+ 
+ 
  Adagrad
 learning rate  를  parameters 를 토대로  adapt !
  infrequent parameters ->   big  업데이트,  frequent parameters -> small update
