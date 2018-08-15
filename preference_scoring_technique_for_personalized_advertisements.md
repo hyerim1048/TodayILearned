@@ -28,7 +28,7 @@
   Customer ID, Category ID, Preference Score 테이블을 만든다.
   
   유저가 할 수 있는 행동은 다음과 같다.
-  *  첫 다입 때 관심 카테고리 설정
+  *  첫 가입 때 관심 카테고리 설정
   * 구매
   *  Interest Expression - 클릭, 웹페이지 방문, 장바구니 등록 등등
   
@@ -38,10 +38,13 @@
    
    그리고 새로운 행동을 할때마다  alpha 만큼 실시간으로 더해준다.
    
-   
+ 
     Selection
     *  광고는 이  preference Score 를 바탕으로 제일 높은 카테고리의 아이템을 추천해준다.
     
       만약  Affinity 를 반영하고 싶다면,  upper category 의  Preference Score  를  Average   of descendent Category 로 잡고, 그 값을 각   자식  category 카테고리로 넣어준다. (단, 자식 카테고리의  PS 가   부모의  PS 보다 높다면 반영하지 않는다.)
       
-      이는 같은 부모 카테고리 내에 있는 다른 카테고리의  Score 도 높을 것이라는 가정하에 정ㅇ한 것이다.
+      이는 같은 부모 카테고리 내에 있는 다른 카테고리의  Score 도 높을 것이라는 가정하에 정한 것이다.
+      
+      
+      https://ac.els-cdn.com/S089571770500511X/1-s2.0-S089571770500511X-main.pdf?_tid=08ce5ee3-f1f9-45fd-bcfc-e5890ed11642&acdnat=1534343594_4964df7a3fe4decaa8f72474938e069e
