@@ -14,3 +14,8 @@ e x. k=1 이면  rating 의 최소값을 주고,  k 가 증가하면 1이 되게
 ALS (alternating least squares)
 
 
+
+### Evaluating Various Implicit Factors in E-commerce
+https://pdfs.semanticscholar.org/c7f9/da0b12cf13854cdbbbcb453777513ea38823.pdf
+이 논문에서는 그냥  recommendation 을 여러 피쳐들로 해보고 제일 좋은 성능을 내는 피쳐를 쓰라고 얘기함.
+
