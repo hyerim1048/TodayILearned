@@ -24,3 +24,5 @@ df.progress_apply(lambda x: x**2)
 # can also groupby:
 # df.groupby(0).progress_apply(lambda x: x**2)
 ```
+
+[tqdm documentation](https://pypi.org/project/tqdm/#pandas-integration)
