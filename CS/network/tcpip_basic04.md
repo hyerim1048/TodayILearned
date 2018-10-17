@@ -37,4 +37,39 @@ IPv4 의 부족으로  private address 와  public address 를 구분하기도 �
 ### 04. routing
 
 * BGP, OSPF, RIP 와 같은  routing protocol 을 통해 누구와 연결되어 있는지 서로 정보를 주고 받는다.
-*  Autonomous System 을 통해 몇 개의 네트워크를 하나로 묶어 관리할 수 있고 이를 통해 더 빨리 데이터를 주고 받을 수 있다. 
+*  Autonomous System 을 통해 몇 개의 네트워크를 하나로 묶어 관리할 수 있고 이를 통해 더 빨리 데이터를 주고 받을 수 있다.
+
+### 05. router and routing protocol
+
+* router :  네트워크 간 패킷을 전달하며 연결하고 있는 각 네트워크에서 사용하는 IP 가 다 필요하며 연결한 만큼 IP 어드레스를 가지게 된다.
+* routing table :  목적지 호스트가 속한 네트워크 정보와 그 네트워크에 도달하기 위해 필요한 라우터 정보
+* 정적  routing 과  동적  routing :  보통은 자동으로 경로 수집 후 테이블을 설정한다
+* 모든 통신 경로를 아는 건 불가능하고  default router 각각 정적으로 설정되어 있어서 거기에 문의하게 된다.
+* 동적  routing algorithm
+  * 거리 벡터형 :  Routing Information Protocol 이 사용하는 방식으로 거리를 살펴본후 제일 짧은 경로를 선택한다. 경유하는  router의 수 (홉)를 센다. 간단한 LAN 네트워크에 적합하다
+  * 링크 상태형 : Open Shortest Path First 에서 사용한다. 통신상태 정보를  map 으로 관리하며 가장 상태가 좋은 네트워크를 선택한다. 경로 불안정성이 높은 네트워크가 주로 사용한다.
+  * AS ( 자율 시스템) 내부에서는  OSPF 를 사용하며 규모가 커지면 맵 정보 처리 부하가 커지기 때문에 네트워크 영역을 분할하고 맵을 따로 만든다
+  *  AS 외부에서는  Border Gateway Protocol 이 사용되며 경로 도중 경유하는  AS 정보도 포함하여 경로정보를 만든다 **
+
+### 06. 네트워크 오류를 통보하는 ICMP
+* 데이터가 전달되지 못했을 떄 송신측으로  ICMP 메세지가 발송된다.  type 을 바탕으로 처리를 한다.
+* TTL이 경과해 패킷이 소멸될 경우 송신 측으로 11 ICMP 메세지를 보낸다.
+
+### 07. address  변환
+* private 주소는  public 주소와 호환되지 않기 때문에 이를 변환하기 위한  NAT 기술이 사용된다.  NAT 는 이 뿐만 아니라  IPv4 와  IPv6 변환에 사용되기도 한다.
+*  router는 송신지의  private 주소를  public 으로 변환하고 그 정보를 가지고 있으며 다른 두개의 컴퓨터가 같은 포트를 사용할 경우에 하나의 포트 정보도 바꿔서 그 정보를 저장한다. (NAPT :  Network Address Port Translation)
+* 사용자의 요청없을 때에 송신을 받아야하는 상황일 때는 계속해서 수신을 원하는 내부 컴퓨터에서 요청을 주기적으로 보내는 방법을 사용하기도 하며, LAN 안의 서버를 공개해야할 경우에는  port forwarding 을 이용한다. (109p)
+
+### 08. 도메인명
+* IP 주소는 이해하기 어렵기 때문에 도메인명을 주로 사용한다.
+*  IP address에 해당하는 정보가 알고 싶을 때  DNS 서버에 질의를 한다
+* 도메인은 논리적으로 계층적 구조를 띄고 있다.  kr -> co -> sample
+* DNS를 관리하는 서버도 이에 따라 계층적으로 구성되어 있다.
+* DNS 서버에 질의할 경우   도메인 명을 관리하는 content 서버는 하위 서버의  IP를 응답하며 응답을 받은  caching server는 원하는 IP address 를 얻을 때까지 계층적으로 질의를 한 후 회신을 한다.
+* 가끔 OS에서 hosts 파일을 볼 수 있는데  DNS 서버 사용하지 않고  test로 사용할 경우 주로 쓴다.
+*  DNS 도메인을 등록하려면 등록 대행 업체를 통해 신청하며  DNS서버에 등록되는 정보를  resource record 라고 부르며 레코드가 등록된 파일은  zone file 이라고 한다.
+
+### 09. IP어드레스를 자동으로 할당하는 DHCP
+
+* Dynamic Host Configuration Protocol : 자동으로  IP address 할당. 가정용  router는 대부분  DHCP 서버 기능을 가지고 있어 private IP 를 할당한다. 공공장소의 무료 wifi도 이 방식을 사용한다.
+* 새로운 host가 연결되면, DHCP는 인지를 못하기 때문에 host가 먼저 모든 네트워크에 연결된 host에  DHCP 발견 메세지를 보내고 DHCP 서버는 이를 인식하여 새 IP를 발급한다. 이 때  DHCP는 어떤 host인지 판별하지 못하므로 모두에게  IP 주소를 보내고 이미 할당된 host는 그 패킷을 버리고, 할당되지 않은 host는 이를 할당받게 된다.
