@@ -10,3 +10,17 @@
 * TCP/UDP 계층 : 경로를 바탕으로 데이터를 전송하는 계층으로  TCP는 신뢰성 있는 데이터 전송을 담보로 한다
 * Application 계층 : 네트워크 프로그래밍의 대부분을 차지하며, 나머지는 소켓이 담보한다.
 
+tcp 서버 함수 호출 순서
+
+socket() -> bind() -> listen() -> accept() -> read/write() -> close()
+
+bind 를 통해 소켓에 주소를 할당한 후  listen 을 통해 연결 요청 대기상태로 들어간다.
+
+```c
+#incluse <sys/socket.h>
+
+int listen(int sock, int backlog);
+
+```
+
+backlog :  연결 요청 대기  Queue, 5면 5개까지 대기
