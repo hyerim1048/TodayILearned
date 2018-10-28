@@ -26,7 +26,7 @@ Oauth 인증을 받을 수 있는 또다른 방법은 서비스의  account 를 
 이 방법은 다른 유저의 데이터를 사용하기보다, 구글 서비스를 사용하는 자신의 서비스 데이터를 얻는 데에 유용하다.
 
 
- 필요한 필드를 채운 후  JWT Token 으로 변환하여  access token 을 얻어야 한다.
+ 필요한 필드를 채운 후  JWT Token (http://jwtbuilder.jamiekurtz.com/) 으로 변환하여 구글로 제출 후 access token 을 얻어야 한다.
  
  인증은 1시간마다 갱신해야 하는 듯하다. 결국 편한건 하나도 없다..
 
