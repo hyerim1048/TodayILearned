@@ -12,6 +12,8 @@ user 의  private 정보 사용 없이 구글 드라이브에 파일을 저장�
 
 user 의 동의를 거쳐야 하며 위의 public key 사용과는 다르게 복잡하다.
 
+redirection 을 두번 거쳐야 한다. 내 사이트 -> 구글 -> 내 
+
 https://developers.google.com/identity/protocols/OAuth2WebServer
 
 1.  permission 확인
