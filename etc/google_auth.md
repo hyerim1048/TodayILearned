@@ -3,7 +3,8 @@ google api 를 사용하기 위해서는 인증 필요
 
 ### 1. API Key 로 인증하는 방식
 * 구글 console 창에서 public API key 생성
-* read 는 가능하나,  write 권한은 다 불가능하다 매우 제한적이지만  key 생성해서 바로 쓰기 쉽다.
+* read 는 가능하나,  write 권한은 다 불가능하다. 아니 왜 public link 에 쓰는 거까지 막아?
+* 매우 제한적이지만  key 생성해서 바로 쓰기 쉽다.
 * https://stackoverflow.com/questions/48747530/access-google-spreadsheet-api-without-oauth-token
 
 ### 2. OAuth 2.0 access tokens  얻기
@@ -28,6 +29,6 @@ Oauth 인증을 받을 수 있는 또다른 방법은 서비스의  account 를 
 
  필요한 필드를 채운 후  JWT Token (http://jwtbuilder.jamiekurtz.com/) 으로 변환하여 구글로 제출 후 access token 을 얻어야 한다.
  
- 인증은 1시간마다 갱신해야 하는 듯하다. 결국 편한건 하나도 없다..
+ 인증은 1시간마다 갱신해야 하는 듯하다. 결국 편한건 하나도 없다.. ㅈ
 
 https://developers.google.com/identity/protocols/OAuth2ServiceAccount
