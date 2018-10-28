@@ -28,6 +28,6 @@ Oauth 인증을 받을 수 있는 또다른 방법은 서비스의  account 를 
 
  필요한 필드를 채운 후  JWT Token 으로 변환하여  access token 을 얻어야 한다.
  
- 인증은 1시간마다 갱신해야 하는 듯하다
+ 인증은 1시간마다 갱신해야 하는 듯하다. 결국 편한건 하나도 없다..
 
 https://developers.google.com/identity/protocols/OAuth2ServiceAccount
