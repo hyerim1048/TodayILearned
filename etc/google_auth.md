@@ -36,3 +36,21 @@ Oauth 인증을 받을 수 있는 또다른 방법은 서비스의  account 를 
  인증은 1시간마다 갱신해야 하는 듯하다. 결국 편한건 하나도 없다.. 
 
 https://developers.google.com/identity/protocols/OAuth2ServiceAccount
+
+
+### 4. Service Account 방식으로  python 에서  drive 접근하기
+
+```python
+ pip install --upgrade google-api-python-client
+ ```
+ 
+ google client 설치한다. (service account 들어가서 json 파일 다운로드 받는다.)
+ 
+ ```python
+ from google.oauth2 import service_account
+SCOPES = ["https://www.googleapis.com/auth/sqlservice.admin"]
+SERVICE_ACCOUNT_FILE=r"C:\Users\gpfla\Downloads\service.json"
+credentials = service_account.Credentials.from_service_account_file(
+    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+ ```
+ credential object 생성
