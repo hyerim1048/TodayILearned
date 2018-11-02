@@ -22,7 +22,7 @@ static partition 하나를 항상 명시해주어야 한다. 매우 귀찮지만
 ( 참고자료 : https://saurzcode.in/2015/01/hive-strict-mode/) 
 
 strict 모드를 풀고 싶으면 다음과 같이 실행하는데
-편하긴 하지만 맵리듀스가 원래 느린데 더 느려진다는 글도 있다. (https://118k.tistory.com/659)
+편하긴 하지만 맵리듀스가 안 그래도 느린데 더 느려진다는 글도 있다. (https://118k.tistory.com/659)
 ```
 hive> set hive.exec.dynamic.partition.mode=nonstrict -- 이게 없으면 dynamic partitioning할 수 없다.
 hive> set hive.exec.dynamic.partition=true -- 데이터를 동적으로 넣겠다고 한다.
