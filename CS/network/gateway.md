@@ -18,8 +18,8 @@ A Gateway refers to :
  * gateway 는 좀 더 상위 계층에서 서로 다른 프로토콜을 변환을 하는 관문을 의미한다.
  
  
-* 그럼 502 Bad Gateway 문제는 왜 발생할까?
- * 두 프로토콜 상 교환의 역할을 해주는 것이다보니, 
+#### 그럼 502 Bad Gateway 문제는 왜 발생할까?
+ * 위에서 언급했듯이 두 프로토콜의 교환 역할을 해주는 것이다보니, 
  * gateway server 나  upstream server (https://en.wikipedia.org/wiki/Upstream_server) 가 데이터를 교환하기 위한 적절한  protocol 을 결정하지 못할 때  website page에 표시된다.
  * 또는 갑작스러운  overhead에 의해 발생하기도 한다.
  * 해결은 보통 다시 데이터를 요청하는 것(refresh)으로 마무리된다.
