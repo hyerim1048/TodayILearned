@@ -1,10 +1,10 @@
 ### Introduction to Mathematical Thinking
 
 * 500bc, the birth of the theorem, precisely stated assertions of Math could be logically proved by formal arguments
-* Greeks, Oyblication of Euclid's Elenets
+* Greeks, publication of Euclid's Elements
 * India , traders& scholars
  
- 고등학교에서는 이렇게 오래된 이론들 +  calculus & probablity theory 정도 배우는 것이 고작이지만,
+ 고등학교에서는 오래된 이론들 +  calculus & probablity theory 정도 배우는 것이 고작이지만,
  
  최근에 쓰이는 이론들은 200년 안에 만들어졌다.
  
