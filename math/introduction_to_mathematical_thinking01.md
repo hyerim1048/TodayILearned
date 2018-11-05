@@ -42,5 +42,12 @@
 총정리
 * 수학은 a new way of thinking 이며
 * 엄밀성을 요구하는 학문, 문장 하나하나에 ambiguity가 존재하면 안 된다.
+
+
+### Impies
+* A implies B : The truth of B follows the truth of A axioms
+* conjunction and disjunction has no relationship between A and B, but Implies has causality
+ * it consists of two parts : a truth (conditional) part and a relation (causation) part
+ * if you think about computer systems, if A then B is a just conditional part and causality is the part of philosophy!
  
  
