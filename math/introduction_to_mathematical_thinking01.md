@@ -47,7 +47,8 @@
 ### Impies
 * A implies B : The truth of B follows the truth of A axioms
 * conjunction and disjunction has no relationship between A and B, but Implies has causality
- * it consists of two parts : a truth (conditional) part and a relation (causation) part
- * if you think about computer systems, if A then B is a just conditional part and causality is the part of philosophy!
+ * real implication consists of two parts : a truth (conditional) part and a relation (causation) part
+  ** we will ignore relation ! just **focus on the truth value** of two statements
+  ** if you think about computer systems, if A then B is a just conditional part and causality is the part of philosophy!
  
  
