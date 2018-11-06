@@ -50,5 +50,32 @@
     - real implication consists of two parts : a truth (conditional) part and a relation (causation) part
     - we will ignore relation ! just **focus on the truth value** of two statements
     - if you think about computer systems, if A then B is a just conditional part and causality is the part of philosophy!
- 
+    
+* truth value of Impication
+    * negation of impication : A doen't implies B **if even though A is True, B is nevertheless False**
+    * **In all other circumstances,** A implies B is true!!!!!!! (매우 헷갈림)
+    * A 가 false 이면  A implies B 가  True  이다.
+    * A conditional B = implies in math
+    
+* other phrases of implication
+    1) If A then B
+    2) A is sufficient for B
+    3) A only if B
+    4) B if A
+    5) B whenever A
+    6) B is necessary for A
+    
+    
+### Equivalent
+* equevalence = each implies the other (biconditional! A implies B and B implies A)
+* the truth value of A and B has to be same.
+* A is equivalent to B = A is nesessary and sufficient for B, A if and only if B (iff)
+* effectively is biconditional in math (프로그램이나 비행기 조종 시스템 같은 경우 biconditional 과 same 은 엄밀하게 구분되겠지만 일상 생활에서는 둘의 구분이 별로!!)
+
+(+번외)  proof 평가 방법
+*  logical correctness 
+* clarity
+* opening
+* stating conclusion reasons
+* 
  
