@@ -22,3 +22,5 @@ USING 'python ./test.py'
 AS ( a string , b string , f STRING )
 FROM test_data
 ```
+
+https://github.com/zaratsian/hive_udf/blob/master/hive_udf_addfile.py
