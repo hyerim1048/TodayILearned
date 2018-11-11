@@ -49,6 +49,7 @@
 * conjunction and disjunction has no relationship between A and B, but Implies has causality
     - real implication consists of two parts : a truth (conditional) part and a relation (causation) part
     - we will ignore relation ! just **focus on the truth value** of two statements
+        - 그리고 진짜 implication (real implication)에서 실제로  truth part 가 올바르게 작동한다. 즉 truth part 정의가 맞음 
     - if you think about computer systems, if A then B is a just conditional part and causality is the part of philosophy!
     
 * truth value of Impication
