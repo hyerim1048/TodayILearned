@@ -29,3 +29,10 @@ If A contains B, B is sufficieent for A and A is necessary for B
 ```
 * 대학에 들어갈 수 있는 필수 조건이 노벨상은 아니지만, 노벨상을 받았다면 대학에 들어갈 능력을 갖추었다고 볼 수 있다.
 *  필수조건은 아니지만  A 가  True 일 때  B 가  True 이다.  (A=>B)
+
+### necessary but not sufficient
+https://www.lesswrong.com/posts/4DLinGRkYKX2Lovtv/necessary-but-not-sufficient
+
+* 물리적 세계에서는 이해하기 쉽다.
+* 자동차가 돌아가기 위해 엔진이 필요하다. 엔진은 자동차를 작동시키기 위한 필수 조건이다. 전제이다
+* 하지만 엔진만 잘 작동한다고 해서 자동차가 돌아가는 것은 아니다. 갖춰야할 연료, 핸들 등등이 많다.
