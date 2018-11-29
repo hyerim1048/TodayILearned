@@ -27,7 +27,16 @@ by DeepMind 인턴
 * noise vector z를 각  layer 에 넣음 ( 원래 보통 처음에만 넣지만)
 * 
 
-* 
+### Architecture details
+
+Cross replica BN in G 
+channel pattern in D : number of filters in the first conv layer of each block 
+= the number of output filters (!= input filter 와 같았던  miyato  논문과 다른점)
+ Adam opt
+G and D  모두  Orthogonal Regularization 으로  Initialization
+
+non-local block
+https://blog.lunit.io/2018/01/19/non-local-neural-networks/
  
 
 BigGAN
