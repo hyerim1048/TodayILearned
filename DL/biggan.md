@@ -1,5 +1,4 @@
 ## Large Scale GAN Training  
-by DeepMind 인턴
 
 ### Introduction
 * GAN 은 좋지만 처음 setup에 민감하게 학습된다.
