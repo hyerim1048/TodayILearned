@@ -14,3 +14,7 @@ from hive_parsing_json_table hpjp
 
 json 형식으로 된  string 컬럼명을  json_tuple 첫번째 인자에 넣고 
 원하는 key 값들을 그 다음 인자로 지정한다.
+
+https://stackoverflow.com/questions/12645634/hive-parsing-json
+
+get_json_object 보다 여러개의 인자를 한번에 꺼낼 때 편하다.
