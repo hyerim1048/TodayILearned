@@ -22,3 +22,8 @@ https://towardsdatascience.com/not-just-another-gan-paper-sagan-96e649f01a6b
 * Cross replica BN
     * batch statistics 가 전체 device에 걸쳐 aggregation 됨. (not only standard device)
  
+
+#### GAN 평가 방법
+* Inception Score : 분포 상태를 보고 잘했다 못했다 평가 . 
+   * marginal 확률과 조건부 확률의 KL - Divergence 를 평가
+ * FID : 평균과 분산의 거리를 통해 
