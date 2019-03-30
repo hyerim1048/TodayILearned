@@ -1,6 +1,6 @@
 ## 입력은 조금만, 일은 더 많이
 
-
+test
 ### Semicolons
 * 예제를 구분하는 delimiter
 * 한 줄에 여러 식을 넣을 때 사용
