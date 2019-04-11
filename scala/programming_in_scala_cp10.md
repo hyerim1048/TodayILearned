@@ -106,19 +106,106 @@ class LineElement(s: String) extends ArrayElemnt(Array(s)) {
 * 우연한 오버라이드 보통 그 원인이 된다. 이런 문제를 scala에서는 컴파일 시점에서 오류를 발생시켜 해결한다 
 
 ## 10.9 다형성과 동적바인딩 
-* 다양한 형태로 서브클래스를 만들 수 있으며
-* 
+
+* 다양한 형태로 서브클래스를 만들 수 있으며 이를 **subtyping polymorphism**이라고 함.
+```scala
+class UniformElement (
+    ch: Char,
+    override val width: Int,
+    override val height: Int,
+) extends Element {
+    private val lint = ch.toString * width
+    def contents = Array.fill(height)(line)
+}
+```
+![hierachy](https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjouK3q3cbhAhVE-2EKHcohBAUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.artima.com%2Fpins1ed%2Fcomposition-and-inheritance.html&psig=AOvVaw1RcdZI83YgEYqYW40GkyCN&ust=1555027174375230)
+```
+val el: Element = new ArrayElement(Array("hello","world"))
+val ae: ArrayElement = new LineElement("hello")
+val e2: Element = ae 
+val e3: Element = new UniformElement('x',2,3)
+```  
+* 코드를 보면 4가지 val 정의가 오른쪽에 있는 표현식의 타입이 왼쪽 type보다 상속계층에서 아래에 위치함 
+
+* 변수나 표현식에 대한 메소드 호출은 **동적으로 바인딩**
+* 즉, 실제 불리는 메소드를 표현식이나 변수(컴파일 시점)이 아니라 실행 시점에 객체의 타입을 따른다.
+```scala
+//abstract class
+abstract class Element {
+   def demo() = { println("element invoked")}
+}
+// override
+class ArrayElement extends Element {
+    override def demo() = { println("array element invoked!")}}
+
+// no override 
+class UniformElement extends Element 
+
+def invokeDemo(e: Element) = {
+
+}
+```
+
 
 ## 10.10 final 멤버 선언
 * override를 막고 싶다면 final 수식자를 멤버에 붙인다. 
 
 ## 10.11 상속과 구성 사용
+* LineElement is an arrayElement?
+* is-a 관계가 의심스러우면 쓰지말자. composition 으로 접근
+```scala 
+class LineElemnet (s:String) extends Element {
+    val contents = Array(s) // reference to an array of string
+    override def width = s.length 
+    override def height = 1
+}
+```
+* LineElement는ArrayElement 내용을 상속받지 않고 자신의 필드에 문자열 배열에 대한 참조를 가지도록 했다. 
+* 즉,  Array와 구성(composition) 관계를 갖는다
 
 ## 10.12 above, beside, toString 구현 
-## 10.13 팩토리 객체 정의 
-## 10.14 높이와 너비 조절 
-## 10.15 한데 모아 시험해보기 
+```scala
+def above(that: Element): Element = 
+    new ArrayElement(this.contents ++ that.contents) // ++ : 두 배열을 이어붙인다
 
+// 명령형 스타일 1st beside 
+def beside(that: Element): Element = {
+    val contents = new Array[String](this.contents.length)
+    for (i <- 0 until this.contents.length)
+        contents(i) = this.contents(i) + that.contents(i)
+    new ArrayElement(contents)
+}
+
+// 축약형 2nd
+new ArrayElement(
+    for (
+        (line1, line2) <- this.contents zip that.contents
+    ) yield line1 + line2
+) 
+// zip : 순서쌍 Tuple2 를 반환하는데 한쪽 길이가 더 길면 자른다.
+
+override def to String = contents mkString "\n"
+// 배열 등 모든 시퀀스에서 사용가능한 mkString을 이용해 정의. 배열 원소 사이사이마다 "\n"
+
+```
+
+## 10.13 팩토리 객체 정의 
+* 팩토리 객체 : 다른 객체를 생성하는 메소드를 제공하는 객체
+* 객체 생성 기능을 한곳에 모아서 제공하고 구체적인 내부 표현을 감출 수 있으며, 클라이언트 또한 라이브러리를 쉽게 이해할 수 있게 된다.
+* 팩토리 객체를 만드는 가장 직관적인 방법은 Element 의 동반 객체를 만들고 이 객체를 레이아웃 요소의 팩토리 객체로 만드는 것이다
+* 이를 통해 Element 와 싱글톤 객체만 노출, 하위 세부 구현은 감춤 
+
+
+## 10.14 높이와 너비 조절 
+
+## 10.15 한데 모아 시험해보기 
+```scala
+import Element.elem
+object Spiral {
+    val space = elem(" ")
+    val corner = elem("+")
+}
+```
 
 
 
