@@ -1,5 +1,5 @@
 ## 상속과 구성 inheritance and composition
-
+ 
 ### Inheritance : 어떤 클래스가 다른 클래스의 참조를 갖는 것 
 
 ## 10.1 2차원 레이아웃 라이브러리 
