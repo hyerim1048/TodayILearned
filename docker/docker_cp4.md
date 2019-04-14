@@ -5,6 +5,8 @@
 * docker service : 스웜에서 클러스터 안의 서비스를 관리 (컨테이너 하나이상)
 * docker stack : 여러개의 서비스를 합친 전체 application 관리 
 
+* dind : docker in docker, 로컬 개발 환경을 구축할 때 하나의 도커에서 여러개의 도커를 생성해서 사용해본다.
+  * registry : dind 환경에서는 외부 도커 데몬에서 빌드된 이미지를 파일시스템을 통해 사용할 수 없으므로 그 역할을 registry 가 한다.
 
 ## cp4. 스웜을 이용한 실전 애플리케이션 개발
 
