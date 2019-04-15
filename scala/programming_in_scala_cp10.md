@@ -187,16 +187,73 @@ new ArrayElement(
 override def to String = contents mkString "\n"
 // 배열 등 모든 시퀀스에서 사용가능한 mkString을 이용해 정의. 배열 원소 사이사이마다 "\n"
 
-```
 
 ## 10.13 팩토리 객체 정의 
 * 팩토리 객체 : 다른 객체를 생성하는 메소드를 제공하는 객체
 * 객체 생성 기능을 한곳에 모아서 제공하고 구체적인 내부 표현을 감출 수 있으며, 클라이언트 또한 라이브러리를 쉽게 이해할 수 있게 된다.
 * 팩토리 객체를 만드는 가장 직관적인 방법은 Element 의 동반 객체를 만들고 이 객체를 레이아웃 요소의 팩토리 객체로 만드는 것이다
 * 이를 통해 Element 와 싱글톤 객체만 노출, 하위 세부 구현은 감춤 
+```scala
+object Element {
+    def elem(contents: Array[String]): Element =
+        new ArrayElement(contents)
+    def elem(chr: char, width: Int, height: Int): Element =
+        new UniformElement(chr, width, height)
+    def elem(line: String): Element =
+       new LineElement(line)
+}
+```
+```
+import Element.elem
+abstract class Element {
+  def contents: Array[String]
+  
+}
+```
 
 
-## 10.14 높이와 너비 조절 
+## 10.14 높이와 너비 조절 (최종 코드)
+
+```
+import Element.elem
+
+abstract class Element {
+   def contents: Array[String]
+   def width: Int = contents[0].length
+   def height: Int = contents.length
+   
+   def above(that: Element): Element = {
+     val this1 = this widen that.width //너비를 인자로 받아서 해당 너비의 요소를 반환
+     val that1 = that widen this.width
+     elem(this1.contents ++ that1.contents)
+   }
+   def beside(that: Element): Element = {
+     val this1 = this heighten that.height
+     val that1 = that heighten this.height
+    elem
+    for ((line1, line2) <- this1.contents zip that1.contents)
+    yield line1 + line2)
+   }
+   def widen(w: Int): Element = 
+      if (w <= width) this
+      else {
+        val left = elem(' ', (w - width) / 2, height)
+        var right = elem(' ', w - width - left.width, height) // 남은 공백 넣어주기
+       left beside this beside right
+      }
+   def heighten(h: Int): Element = 
+     if (h <= height) this 
+     else {
+       val top = elem .. same as widen...
+     }
+override def toString = contents mkString "\n"
+
+}
+
+
+```
+
+
 
 ## 10.15 한데 모아 시험해보기 
 ```scala
