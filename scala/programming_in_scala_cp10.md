@@ -195,6 +195,16 @@ override def to String = contents mkString "\n"
 * 이를 통해 Element 와 싱글톤 객체만 노출, 하위 세부 구현은 감춤 
 ```scala
 object Element {
+  private class ArrayElement(
+    val contents: Array[String]
+  ) extends Element
+  private class LineElement(s: String) extends Element {
+    val contents = Array(s)
+    override def width = s.length
+    override def height = 1
+  }  
+
+    
     def elem(contents: Array[String]): Element =
         new ArrayElement(contents)
     def elem(chr: char, width: Int, height: Int): Element =
