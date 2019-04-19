@@ -16,3 +16,11 @@
 
 https://docs.travis-ci.com/user/for-beginners
 https://docs.travis-ci.com/user/tutorial/
+
+https://docs.travis-ci.com/user/job-lifecycle/#breaking-the-build
+## The job lifecycle 
+* main 2 parts 
+  * install : install any dependecies
+  * script : run the build script 
+
+
