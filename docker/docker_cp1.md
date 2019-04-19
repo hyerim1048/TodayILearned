@@ -17,6 +17,10 @@
 * RUN : commands that will run in a docker 
 * COPY : copy file or directories into a docker container 
 * CMD : a process to run an application in a container 
+* ENV : environment variable in docker 
+* EXPOSE : host 와 연결할 포트 번호 --expose와 같음 
+* WORKDIR : RUN, CMD, ENTRYPOINT 명령이 실행될 디렉토리를 설
+  * http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/13
 ```
 docker image build -t image_name[:tag_name] path_of_Dockerfile
 
@@ -27,7 +31,7 @@ docker image build -t image_name[:tag_name] path_of_Dockerfile
 * docker compose : yaml format으로 기술된 설정 파일 
   * version: 해석하는데 필요한 문법 버전 
   * services 아래 container 이름 , 도커이미지, 포트포워딩 설정 지정 
-
+  * https://docs.docker.com/compose/compose-file/compose-file-v2/
 * docker-compose up : 여러 컨테이너를 한번에 시작 
  
   
