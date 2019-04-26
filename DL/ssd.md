@@ -1,6 +1,6 @@
 # Object Detection
 
-Last Edited: Apr 24, 2019 11:44 PM
+Last Edited: Apr 26, 2019 3:18 PM
 Tags: CNN,DL
 
 # SSD
@@ -51,7 +51,7 @@ Tags: CNN,DL
 - **Convolutional predictors for detection**
     - For a feature layer of size m*n with p channels → predicting with 3*3*p small kernel (score for a category or a shape offset). for each m*n locations → output
 - **Default boxes and aspect ratios**
-    - a t each feature map cell, predict **offsets relative to the default nox shapes + per-class scores**
+    - a t each feature map cell, predict **offsets relative to the default box shapes + per-class scores**
     - **for each box from k at a given location → (c+4)k filters**
 
 ### 2.2 Training
@@ -73,12 +73,22 @@ Tags: CNN,DL
 - **Hard negative mining**
     - After matching, most are negatives
     - for all the negative examples , sort them highest confidence loss (ratio between negatives and positives is at most 3: 1)
+    - → speed UP!!
 - **Data augmentation**
     - use the entire input
     - sample a patch (minimum jaccard overlap with 0.1 , 0.3, 0.5, 0.7, 0.9)
     - randomly sample a path
         - Sampled patch size : [0.1 , 1] of the original image size
         - aspect ratio : [1/2, 2]
+
+추가 설명 
+
+- x,y, h, w → dx (how much to shift), dy, dh (how much from dx),dw 를 예측
+- IOU
+- RCNN → smooth L1 loss (L1 + L2) 좋아서 씀
+- height, width → 단위가 크니까 log를 씌워서 씀
+- 0.9 + (0.9-0.2) / 6 - 1 * (9 - 1) → (0.2 - 0.9) 나오고 0.1 도 걍 추가 / 넘나 안와닿아
+- 실험 에서 fc6, fc7 pool5 from 2*2 - s2 to 3*3 s1 using atrous algiruthm
 
 ---
 
@@ -88,7 +98,7 @@ Tags: CNN,DL
 
 [https://github.com/hyerim1048/ssd.pytorch/blob/master/ssd.py](https://github.com/hyerim1048/ssd.pytorch/blob/master/ssd.py)
 
-1) build_ssd 
+### build_ssd
 
     base = {
         '300': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 'C', 512, 512, 512, 'M',
@@ -117,7 +127,7 @@ Tags: CNN,DL
                                          mbox[str(size)], num_classes)
         return SSD(phase, size, base_, extras_, head_, num_classes)
 
-2) implementation of VGG 
+### implementation of VGG
 
 - ceiling mode
 - additional layers
@@ -165,7 +175,7 @@ Tags: CNN,DL
                     in_channels = v
             return nn.Sequential(*layers)
 
-3) extra layers 
+### extra layers
 
     add_extras([256, 'S', 512, 128, 'S', 256, 128, 256, 128, 256], 1024)
 
@@ -185,7 +195,7 @@ Tags: CNN,DL
             in_channels = v
         return layers
 
-4) multibox 
+### multibox
 
     multibox(vgg(base[str(size)], 3),add_extras(extras[str(size)], 1024),
              mbox[str(size)], num_classes) # [4, 6, 6, 6, 4, 4], 21
@@ -207,6 +217,60 @@ Tags: CNN,DL
             conf_layers += [nn.Conv2d(v.out_channels, cfg[k]
                                       * num_classes, kernel_size=3, padding=1)]
         return vgg, extra_layers, (loc_layers, conf_layers)
+
+**Choosing scales and aspect ratios for default boxes** 
+
+    # https://github.com/amdegroot/ssd.pytorch/blob/master/data/config.py
+    # SSD300 CONFIGS
+    voc = {
+        'num_classes': 21,
+        'lr_steps': (80000, 100000, 120000),
+        'max_iter': 120000,
+        'feature_maps': [38, 19, 10, 5, 3, 1],
+        'min_dim': 300,
+        'steps': [8, 16, 32, 64, 100, 300],
+        'min_sizes': [30, 60, 111, 162, 213, 264],
+        'max_sizes': [60, 111, 162, 213, 264, 315],
+        'aspect_ratios': [[2], [2, 3], [2, 3], [2, 3], [2], [2]],
+        'variance': [0.1, 0.2],
+        'clip': True,
+        'name': 'VOC',
+    }
+
+    # https://github.com/amdegroot/ssd.pytorch/blob/master/layers/functions/prior_box.py
+    
+
+[https://towardsdatascience.com/learning-note-single-shot-multibox-detector-with-pytorch-part-1-38185e84bd79](https://towardsdatascience.com/learning-note-single-shot-multibox-detector-with-pytorch-part-1-38185e84bd79) 맨 마지막 default boxes 개수 계산 
+
+**Matching Strategy** 
+
+    def jaccard(box_a, box_b):
+        """Compute the jaccard overlap of two sets of boxes.  
+           The jaccard overlap is simply the intersection over 
+           union of two boxes.  Here we operate on ground truth 
+           boxes and default boxes.
+           E.g.:
+              A ∩ B / A ∪ B = A ∩ B / (area(A) + area(B) - A ∩ B)
+           Args:
+              box_a: (tensor) Ground truth bounding boxes, 
+                     Shape:    [num_objects,4]
+                     (xmin, ymin, xmax, ymax) 포맷
+                      // https://github.com/amdegroot/ssd.pytorch/blob/master/layers/box_utils.py
+              box_b: (tensor) Prior boxes from priorbox layers, 
+                     Shape: [num_priors,4]
+           Return:
+              jaccard overlap: (tensor) 
+                               Shape: [box_a.size(0), box_b.size(0)]
+        """
+        inter = intersect(box_a, box_b)
+        area_a = ((box_a[:, 2] - box_a[:, 0]) *
+                  (box_a[:, 3] - 
+                   box_a[:, 1])).unsqueeze(1).expand_as(inter)
+        area_b = ((box_b[:, 2] - box_b[:, 0]) *
+                  (box_b[:, 3] - 
+                   box_b[:, 1])).unsqueeze(0).expand_as(inter)  
+        union = area_a + area_b - inter
+        return inter / union  # [A,B]
 
 ### Related links
 
