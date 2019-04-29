@@ -1,7 +1,3 @@
-# Django Tutorial
-
-Created: Apr 27, 2019 10:31 PM
-
 ## Database
 
 ### [PostgreSQL](https://docs.djangoproject.com/en/2.2/ref/databases/#postgresql-notes)
@@ -50,3 +46,21 @@ Created: Apr 27, 2019 10:31 PM
 
     - serializer
     - [https://yunhookim.tistory.com/7](https://yunhookim.tistory.com/7)
+        - instances into representations such as json
+
+    ### User Auth
+
+    - using AbstractUser
+    - [https://whatisthenext.tistory.com/128](https://whatisthenext.tistory.com/128)
+
+        from django.db import models
+        from django.contrib.auth.models import AbstractUser
+        
+        class User(AbstractUser):
+            bio = models.TextField(max_length=500, blank=True)
+            location = models.CharField(max_length=30, blank=True)
+            birth_date = models.DateField(null=True, blank=True)
+
+    - rest framework
+        - [https://www.django-rest-framework.org/api-guide/authentication/](https://www.django-rest-framework.org/api-guide/authentication/)
+    -
