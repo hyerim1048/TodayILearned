@@ -1,3 +1,12 @@
+## initial settings
+
+- postgreSQL install and create user
+- in [settings.py](http://settings.py)
+    - change sqlite3 to Postgre  DATABASES
+    - add your ip addres to  ALLOWED_HOSTS
+- if you use virtualenv ,
+    - be careful where python path is !
+
 ## Database
 
 ### [PostgreSQL](https://docs.djangoproject.com/en/2.2/ref/databases/#postgresql-notes)
@@ -47,6 +56,9 @@
     - serializer
     - [https://yunhookim.tistory.com/7](https://yunhookim.tistory.com/7)
         - instances into representations such as json
+    ### HyperlinkedModelSerializer
+
+        - primary key를 설정하는 대신에 api에 대한 link를 생성함
 
     ### User Auth
 
