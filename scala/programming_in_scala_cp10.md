@@ -1,6 +1,6 @@
 ## 상속과 구성 inheritance and composition
  
-### Inheritance : 어떤 클래스가 다른 클래스의 참조를 갖는 것 
+* Inheritance : 어떤 클래스가 다른 클래스의 참조를 갖는 것 
 
 ## 10.1 2차원 레이아웃 라이브러리 
 * 2차원으로 레이아웃으로 배치하고 표현하는 라이브러리 만들자!
@@ -14,7 +14,7 @@ abstract class Element {
 ``` 
 * contents : 구현이 없는 메소드 선언; an abstract member of Element class
 * 추상 멤버가 있는 클래스는 추상 클래스로 선언해야만 함! (abstract class Element ...)
-* abstract class 를 생성할 수는 없다 
+* abstract class 의 인스턴스를 생성할 수는 없다. 구현이 없기 때문에 
 
 ## 10.3 피라미터 없는 메소드 정의 
 
@@ -25,13 +25,13 @@ abstract class Element {
     def width: Int = if (height == 0) 0 else contents(0).length
 }
 ```
-
+* 위의 3개의 메소드 모두 파라미터가 없다 ()도 없다
 * 파라미터 없는 메소드 : method 가 인자를 받지 않고 해당 객체의 필드를 읽기만 할 때 사용 
 ```scala
    val height = contents.length 
 ```
 * val 을 통해 변경 불가능한 필드로 선언해도 클라이언트 입장에서는 동일함
-* 필드는 클래스 초기화 때에 값을 미리 계산해서 약간 빠르지만 Element객체마다 값을 저장할 별도의 메모리 공간이 필요함 
+ * 필드는 클래스 초기화 때에 값을 미리 계산해서 약간 빠르지만 객체마다 값을 저장할 별도의 메모리 공간이 필요함 
 
 
 * 빈 괄호 메소드 height(): Int
@@ -44,6 +44,7 @@ println() //() 사용하는게 나음
 
 ## 10.4 클래스 확장 
 * 추상 클래스를 상속한 서브클래스를 만들자!
+
 ```scala
 class ArrayElement(conts: Array[String]) extends Element {
     def contents: Array[String] = conts
@@ -54,15 +55,15 @@ class ArrayElement(conts: Array[String]) extends Element {
   2) ArrayElement는 Element의 Subtype이 된다.
 
 * 단, subclass에 superclass와 동일한 멤버 정의가 있으면 superclass의 멤버를 상속받지 않는다 (override)
-* 추상 멤버를 구현했다면 implement  
+* 추상 멤버를 구현했다면 (implement)  
 * extends가 없다면 scala.AnyRef를 상속한다고 가정한다. https://docs.scala-lang.org/ko/tutorials/tour/unified-types.html.html
-* 서브타입 관계면 superclass를 필요로 하는 곳 어디에서나 subclass 값을 쓸 수 있다
+* 서브타입 관계면 superclass를 필요로 하는 곳 어디에서나 subclass 값을 쓸 수 있다 (아래 참고)
 ```scala
 val e: Element = new ArrayElement(Array("hello"))
 ```
 
 ## 10.5 method and field override 
-* scala에서는 field 가 파라미터없는 method를 override할 수 있다
+* scala에서는 **field** 가 파라미터없는 **method를 override**할 수 있다
 ```scala
 class ArrayElement(conts: Array[String]) extends Element {
   val contents: Array[String] = conts
@@ -125,7 +126,7 @@ val ae: ArrayElement = new LineElement("hello")
 val e2: Element = ae 
 val e3: Element = new UniformElement('x',2,3)
 ```  
-* 코드를 보면 4가지 val 정의가 오른쪽에 있는 표현식의 타입이 왼쪽 type보다 상속계층에서 아래에 위치함 
+* 코드를 보면 (4가지 val 정의가) 오른쪽에 있는 표현식의 타입이 왼쪽 type보다 상속계층에서 아래에 위치함 
 
 * 변수나 표현식에 대한 메소드 호출은 **동적으로 바인딩**
 * 즉, 실제 불리는 메소드를 표현식이나 변수(컴파일 시점)이 아니라 실행 시점에 객체의 타입을 따른다.
@@ -138,12 +139,18 @@ abstract class Element {
 class ArrayElement extends Element {
     override def demo() = { println("array element invoked!")}}
 
-// no override 
+// no override // Element의 데모를 상속한다
 class UniformElement extends Element 
 
 def invokeDemo(e: Element) = {
-
+    e.demo()
 }
+
+// ArryElement's implementation invoked 
+invokeDemo(new ArrayElement)
+
+// Element's implementation invoked
+invokeDemo(new UniformElement)
 ```
 
 
@@ -169,6 +176,7 @@ def above(that: Element): Element =
     new ArrayElement(this.contents ++ that.contents) // ++ : 두 배열을 이어붙인다
 
 // 명령형 스타일 1st beside 
+// 두 요소의 길이는 같다고 가정한다
 def beside(that: Element): Element = {
     val contents = new Array[String](this.contents.length)
     for (i <- 0 until this.contents.length)
@@ -184,16 +192,20 @@ new ArrayElement(
 ) 
 // zip : 순서쌍 Tuple2 를 반환하는데 한쪽 길이가 더 길면 자른다.
 
-override def to String = contents mkString "\n"
-// 배열 등 모든 시퀀스에서 사용가능한 mkString을 이용해 정의. 배열 원소 사이사이마다 "\n"
-
+//원하는 형식으로 화면에 표현하고 싶다
+override def toString = contents mkString "\n"
+// 배열 등 모든 시퀀스에서 사용가능한 mkString을 이용해 정의. 배열 원소 사이 사이마다 "\n"
+```
 
 ## 10.13 팩토리 객체 정의 
+* 팩토리 뒤로 감춰보자
 * 팩토리 객체 : 다른 객체를 생성하는 메소드를 제공하는 객체
 * 객체 생성 기능을 한곳에 모아서 제공하고 구체적인 내부 표현을 감출 수 있으며, 클라이언트 또한 라이브러리를 쉽게 이해할 수 있게 된다.
 * 팩토리 객체를 만드는 가장 직관적인 방법은 Element 의 동반 객체를 만들고 이 객체를 레이아웃 요소의 팩토리 객체로 만드는 것이다
 * 이를 통해 Element 와 싱글톤 객체만 노출, 하위 세부 구현은 감춤 
+
 ```scala
+//싱글톤 팩토리 객체를 만든 후 private 클래스로 만들어서 내부 구현을 숨긴다.
 object Element {
   private class ArrayElement(
     val contents: Array[String]
@@ -204,7 +216,7 @@ object Element {
     override def height = 1
   }  
 
-    
+    // 팩토리 메소드
     def elem(contents: Array[String]): Element =
         new ArrayElement(contents)
     def elem(chr: char, width: Int, height: Int): Element =
@@ -213,12 +225,15 @@ object Element {
        new LineElement(line)
 }
 ```
-```
+```scala
 import Element.elem
 abstract class Element {
   def contents: Array[String]
-  
+  ...
+  def above(that: Element): Element = 
+    elem(this.contents ++ that.contents)
 }
+...
 ```
 
 
@@ -245,16 +260,18 @@ abstract class Element {
     yield line1 + line2)
    }
    def widen(w: Int): Element = 
-      if (w <= width) this
+      if (w <= width) this // that.width보다 크면 그냥 return하면 된다
       else {
-        val left = elem(' ', (w - width) / 2, height)
+        val left = elem(' ', (w - width) / 2, height) //UniformElement
         var right = elem(' ', w - width - left.width, height) // 남은 공백 넣어주기
-       left beside this beside right
+       left beside this beside right // 전달받은 너비에 맞춰 contents를 가운데 베치하고 좌우에 필요한 만큼 공백을 채워넣는다
       }
    def heighten(h: Int): Element = 
      if (h <= height) this 
      else {
-       val top = elem .. same as widen...
+       val top = elem(' ', width , (w - height) / 2) //UniformElement
+       val bot = elem(' ', width, h - height - top.height) 
+       top above this above bot
      }
 override def toString = contents mkString "\n"
 
@@ -264,15 +281,6 @@ override def toString = contents mkString "\n"
 ```
 
 
-
-## 10.15 한데 모아 시험해보기 
-```scala
-import Element.elem
-object Spiral {
-    val space = elem(" ")
-    val corner = elem("+")
-}
-```
 
 
 
