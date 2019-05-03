@@ -13,3 +13,6 @@
 ## Free Illustrator 
 
 ### Gravit Designer 
+  * Supprt Online & Offline
+  * similar to illustrator 
+  * cons : cannot see the object when moving an object by a trackpad or cursor
