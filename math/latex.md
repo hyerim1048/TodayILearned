@@ -1,9 +1,9 @@
 \begin{equation}  
 
 \end{equation}
+![](https://latex.codecogs.com/gif.latex%5Csum_%7Bi%3D1%7D%5En%20X_%7Bij%7D%20%3D%201%20%5Cquad%20%5Cforall%20j%20%5Cin%20J)
 
-
-![](" src="https://latex.codecogs.com/gif.latex%5Csum_%7Bi%3D1%7D%5En%20X_%7Bij%7D%20%3D%201%20%5Cquad%20%5Cforall%20j%20%5Cin%20J")
+![](" src=)
 
 * \sum 
 * infinity : \infty 
