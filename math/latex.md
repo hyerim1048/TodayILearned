@@ -25,3 +25,5 @@ $$\sum_{n=0}^\infty C_n (x-a)^n = C_0 + C_1 (x-a) + C_2(x-a)^2 ...$$
     - %%
 
 [http://ftp.harukasan.org/CTAN/info/lshort/korean/lshort-ko.pdf](http://ftp.harukasan.org/CTAN/info/lshort/korean/lshort-ko.pdf)
+
+![](https://latex.codecogs.com/svg.latex?y%3Dx%5E2)
