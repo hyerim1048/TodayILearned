@@ -1,10 +1,19 @@
-### python 
+### Python
 
-C언어를 기반으로 구성되어 있음 
+- no saying about if its an compiled or interpreted programming language
+    - its a property of the implemetation
+- py : source code → pyc : byte code
+    - byte code can be interpreted(CPython) or JIT compiled (Pypy)
+
+[http://net-informations.com/python/iq/interpreted.htm](http://net-informations.com/python/iq/interpreted.htm)
+
+- cpython : general implemetation
 
 Python Dynamically Typed rather than Statically Typed 
 
 - integer가 실행 시에 python object로 인식됨
+
+ 
 
 ### Python is interpreted rather than compiled
 
@@ -28,3 +37,9 @@ Python List 객체는 length 와 item의 주소를 가지고 있어서 한번더
 - python에서 문자열은 불변값이다 .
 - + 대신에 .format % 를 사용해라
 - 또는 .join()
+
+### Garbage Collection
+
+- 메모리 관리 기법
+- 프로그램이 동적으로 할당했던 메모리 영역에서 필요없게 된 영역을 해제하는 기능
+-
