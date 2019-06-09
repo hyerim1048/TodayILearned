@@ -6,12 +6,35 @@ sudo -E setproxy pip3 install apache-airflow
     airflow initdb
     
     setproxy sudo -E airflow webserver -p 9000
-```
-
-### kerberos
+    
+    
+  ### kerberos
 
 - renew_function
     - [https://github.com/apache/airflow/blob/master/airflow/security/kerberos.py](https://github.com/apache/airflow/blob/master/airflow/security/kerberos.py)
+- renew and store in the ticket cache
+    - not all hooks are supported
+    - doesn't integrate kerberos into the web interface
+        - have to rely on network level security
+    - celery 도 아직이지만 key tab 생성해서 모든 worker 돌아간 이후에 ticket renewer이 돌아가게끔 할 수 있음
+
+### Enabling Kerberos
+
+- kerberos-airflow install
+
+    pip install 'apache-airflow[kerberos]'
+
+airflow 공통 키탭 설정 방법 
+
+1) generate keytab 
+
+2) store the file where airflow user can read it 
+
+### Using kerberos authentication
+
+- hive hook
+
+    { "use_beeline": true, "principal": "hive/_HOST@EXAMPLE.COM"}
 
 ### Connections
 
