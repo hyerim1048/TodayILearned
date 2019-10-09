@@ -29,3 +29,11 @@ list 를 생성하지 않는다는 것만 빼면 위는 list comprehension과 �
 https://stackoverflow.com/questions/24586757/understanding-list-comprehension-for-flattening-list-of-lists-in-python
 다양한 방법들이 많다.
 https://winterj.me/list_of_lists_to_flatten/
+
+
+## if-else 
+To use if-else in "list comprehension"
+```
+[a if a else 2 for a in [0,1,0,3]]
+```
+
