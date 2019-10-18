@@ -25,6 +25,21 @@ Worst case runtime 은 O(N) 모든 키끼리 충돌이 발생할 경우를 가�
 
 Balanced binary tree에 저장할 수 있다. 탐색 시간은 O(logN)이지만 큰 배열을 미리 할당하지 않아도 되어 잠재적으로는 적은 공간을 사용한다. 
 
+
+ArrayList , 가변크기배열 
+Java에서는 고정된 길이의 list를 선언해야하고, 어떤 언어에서는 list를 가변적으로 사용할 수 있다. 
+동적으로 크기가 변하는 배열과 비슷한 자료구조를 사용하고 싶다면 *array list* 를 사용한다. 
+
+### 상환 입력 시간 
+크기가 N인 배열을 생각했을 때, 그 배열의 크기를 2배씩 키우기 때문에 마지막 복사에서는 N/2만큼의 원소가 복사되었을 것이다. 
+N/2 + N/4 + ... + 2 + 1 = O(N) 
+모든 copy of elements 는 길어봤자 수행시간이 N 이다. (N, 제논의 역설? )
+원소를 넣을 때마다 복사하는 것이 아니니 평균적으로는 *O(1)* 이 소요된다.
+
+
+
+
+
 ### References 
 Cracking the coding interview
 https://k39335.tistory.com/18
