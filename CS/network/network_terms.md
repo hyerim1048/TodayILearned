@@ -26,3 +26,66 @@
 각 기기별로 할당된 기기 고유 주소 
 
 핸드폰, pc 등 모든 인터넷 사용하는 곳에는 있음
+
+# overlay network
+
+- 물리 네트워크 위에 성립되는 가상의 컴퓨터 네트워크
+- 물리적 링크를 통하지만 고려하지 않는다
+
+![](Untitled-ae28da3a-66cb-4753-938c-c8f5bfe3969d.png)
+
+### 비구조화 overlay
+
+- 각 노드가 인접 노드를 선택할 때 제약이 없도록 설계
+
+### 구조화 overlay
+
+- 각 노드 별 연결할 때 상대가 미리 결정되어 있고 topology도 설계되어 있는 network
+- 메시지 도착이나 확장성, 효율성
+
+[https://m.post.naver.com/viewer/postView.nhn?volumeNo=15242539&memberNo=19185109](https://m.post.naver.com/viewer/postView.nhn?volumeNo=15242539&memberNo=19185109)
+
+# CIDR : Classless Inter-Domain Routing
+
+[https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+
+- a method for allocating IP addresses and IP routing
+- router에 routing tables 이 많아지는 걸 늦추기 위해 만든 것이다
+- IP addresses 는 two groups of bits로 이루어져 있다
+    - network prefix : identify **a whole network** or subnet
+    - least significant host identifier : specify a **particular interface of a host** on the network
+- It is based on **the variable-length subnet masking (VLSM)** technique, which allows the specification of arbitrary-length prefixes
+
+# network fabric
+
+[https://searchnetworking.techtarget.com/definition/network-fabric](https://searchnetworking.techtarget.com/definition/network-fabric)
+
+- industry term in a network topology
+- to illustrate the idea that if someone were to document network components on paper, 그물망 처럼 짜여져 있어서 이렇게 부른다
+
+# network topology
+
+[https://searchnetworking.techtarget.com/definition/network-topology](https://searchnetworking.techtarget.com/definition/network-topology)
+
+- the arrangement of nodes -- usually switches, routers, software switch/router features and connections in a network like a graph !
+    - physical topology
+        - the layout of nodes and physical connections including wires(ethernet), fiber optics 등등
+        - e.g.  bus network, star network
+    - Logical topologies
+        - node의 logical relationship을 의미한다
+
+# Ethernet
+
+[https://searchnetworking.techtarget.com/definition/Ethernet](https://searchnetworking.techtarget.com/definition/Ethernet) 
+
+- traditional tech for connecting wired local area networks LAN
+    - communicate with each other via a protocol
+
+### linux eth0
+
+[https://unix.stackexchange.com/questions/82919/what-does-the-eth0-interface-name-mean-in-linux](https://unix.stackexchange.com/questions/82919/what-does-the-eth0-interface-name-mean-in-linux)  
+
+- os 나 user가 first ethernet interface 에 부여한 이름이다.
+    - wifi 를 쓰면 wlan 이라고 잡힐 것이다
+
+[https://searchnetworking.techtarget.com/](https://searchnetworking.techtarget.com/)
