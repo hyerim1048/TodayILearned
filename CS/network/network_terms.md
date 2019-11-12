@@ -89,3 +89,17 @@
     - wifi 를 쓰면 wlan 이라고 잡힐 것이다
 
 [https://searchnetworking.techtarget.com/](https://searchnetworking.techtarget.com/)
+
+## Network 대역폭 (Bandwidth)
+
+[https://phiz.kr/tip/9022](https://phiz.kr/tip/9022) 
+
+[https://docs.microsoft.com/ko-kr/azure/storage/common/storage-solution-large-dataset-moderate-high-network](https://docs.microsoft.com/ko-kr/azure/storage/common/storage-solution-large-dataset-moderate-high-network) 
+
+- 물리적으로 한번에 보낼 수 있는 최대 데이터량
+- 인터넷에서는 네트워크 대역폭
+- 대용량데이터가 보통 TB, PB 의미할 때
+- 보통 네트워크 대역폭(100Mbps~1Gbps)
+- 높은 네트워크 대역폭(1Gbps~100Gbps) 를 의미한다고 azure docs에서 설명
+- 호스팅 업체들은 보통 순간 트래픽 제한이나 한달 총량에 대해 과금한다고 함
+    - 대부분 한 달 총량이 유리함
