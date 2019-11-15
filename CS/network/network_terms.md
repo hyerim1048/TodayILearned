@@ -103,3 +103,16 @@
 - 높은 네트워크 대역폭(1Gbps~100Gbps) 를 의미한다고 azure docs에서 설명
 - 호스팅 업체들은 보통 순간 트래픽 제한이나 한달 총량에 대해 과금한다고 함
     - 대부분 한 달 총량이 유리함
+
+
+### MTU
+
+- Maximum Trasmission Unit
+- the largest number of bytes an individual datagram can have on a particular data communications link
+- OSI Layer 2 data nework 이고 보통 1500bytes가 기본이다.
+
+### Encapsulation Overhead
+
+- protocol에 따라 protocol header overhead가 생길 수 있다
+- 예를 들어 IP Protocol 47은 20 byte IPv4 header와 4 byte GRE header를 가지고 있다
+- 그리고 VXLAN은 50 bytes가 더해진다
