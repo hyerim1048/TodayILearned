@@ -62,3 +62,101 @@ else if
 - EventTarget.addEventListener(event type, listener) :
     - interface represents an object that can handle an event dispatched by an EventTarget object
     - 특정 event 가 발생하면 불러올 함수를 넣어준다 (function or object)
+    
+    
+## scope
+
+- Root Scope(window)
+- child scope
+
+condition ? expr1 : expr2;
+```
+    var automatedAnswer = 
+    "Your account # is " + ( isUserValid(true) ? "1234": "not avaliable")
+
+switch 
+
+    switch(direction) {
+        case "forward":
+            whatHappens = "you encounter a monster"; 
+    
+    } 
+    
+ ```
+ 
+ ## es5 vs es6
+
+- ECMA international
+- ECMAScript === Javascript
+- es5 : ECMAscript version 6
+
+[https://www.w3schools.com/js/js_let.asp](https://www.w3schools.com/js/js_let.asp)
+
+    // false
+    const palyer = 'bobby';
+    let experience = 100;
+    let wizardLevel = false;
+    if (esperience > 90) {
+    let wizardLevel = true;
+    }
+    
+    console.log(wizardLevel)
+
+- var : no new scope inside function
+    - Variables declared Globally (outside any function) have Global Scope
+    - declared Locally (inside a function) have Function Scope.
+    - **Redeclaring a variable inside a block will also redeclare the variable outside the block**:
+
+```
+        var x = 10;
+        // Here x is 10
+        {
+          var x = 2;
+          // Here x is 2
+        }
+        // Here x is 2
+```
+- let : new scope (Block Scope). don't use var, use let
+```
+    const a = function() {
+    } // function that can not be changed 
+```
+- destruncturing
+- object struction
+```
+    // dynamic
+    const name = "ho";
+    const obj = {
+    [name] : "tst",
+    [1+2]: "test"
+    }
+    // const allocation
+    const a = "ho";
+    const b = "test";
+    const obj = {
+    a,b
+    }
+```
+- string
+```
+    const greenBest = `Hi ${name} you seem to be ${age - 10}`
+```
+- default arguments
+```
+    function green(name='',age=30)
+```
+- symbol : create completely unique type
+    - syml2  !== syml3
+```
+    var syml = Symbol(); 
+    var syml2 = Symbol('foo');
+    var syml3 = Symbol('foo');
+```
+- arrow function
+```
+    function add(a, b){
+        return a + b; 
+    }
+    
+    const add = (a, b) =>  a+b;
+ ```
