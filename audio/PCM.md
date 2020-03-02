@@ -1,6 +1,6 @@
 # Audio 저장 방식
 
-Created: Mar 02, 2020 11:22 PM
+Created: Mar 02, 2020 12:03 PM
 Topic: Audio
 
 # Pulse-code modulation (PCM)
